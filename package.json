@@ -1,0 +1,26 @@
+{
+  "name": "datamax-printer-commands",
+  "version": "1.0.0",
+  "description": "A Node.js module to serialize Datamax O'Neil APEX 2 printer commands.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PedroEGV/datamax-printer-commands.git"
+  },
+  "keywords": [
+    "datamax",
+    "printer",
+    "commands",
+    "bluetooth",
+    "apex2"
+  ],
+  "author": "PedroEGV",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/PedroEGV/datamax-printer-commands/issues"
+  },
+  "homepage": "https://github.com/PedroEGV/datamax-printer-commands#readme"
+}
