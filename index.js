@@ -1,3 +1,4 @@
 module.exports = {
-  BarCodeBuilder: require('./bar-code-builder')
-}
+  BarCodeBuilder: require('./bar-code-builder'),
+  nonCompressedGraphics: require('./graphics')
+};
