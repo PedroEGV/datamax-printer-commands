@@ -1,17 +1,21 @@
 'use strict';
 
 const { globalCommands, barCodeCommands } = require('./commands');
+const { addToSequece, toSequenceString } = require('./utils');
 
 class BarCodeBuilder {
   constructor(text) {
-    this.data = '';
-    this.data += text || '';
-    this.z = barCodeCommands.HUMAN_READABLE;
+    this.setText(text);
+    this.setHumanReadable(true);
+    this.setHeight(1);
     this.t = barCodeCommands.barCodeType.CODE_128;
-    this.n = this.data.length + 1;
-    this.cmHeight = 1;
-    this.h = this.getHeight();
     this.startChar = barCodeCommands.startCharater.CODE_B;
+  }
+
+  setText(text) {
+    this.text = '';
+    this.text += text || '';
+    this.n = this.text.length + 1;
   }
 
   getHeight() {
@@ -30,10 +34,13 @@ class BarCodeBuilder {
   }
 
   build() {
-    var commandReducer = (s, c) => s + String.fromCharCode(c);
-    var commandStart = [globalCommands.ESC, this.z, this.t, this.n, this.h, this.startChar].reduce(commandReducer, '');
-    var commandEnd = [globalCommands.CR, globalCommands.LF].reduce(commandReducer, '');
-    return commandStart + this.data + commandEnd;
+    var escapeSequence = []
+
+    addToSequece([globalCommands.ESC, this.z, this.t, this.n, this.h, this.startChar], escapeSequence);
+    addToSequece(this.text, escapeSequence);
+    addToSequece([globalCommands.CR, globalCommands.LF], escapeSequence);
+
+    return toSequenceString(escapeSequence);
   }
 }
 
