@@ -22,5 +22,9 @@ describe('BarCodeBuilder', function () {
     assert.equal(barCodeBuilder.build(), '\u001bz2\u0005(\u00891234\u000d\u000a');
   });
 
-
+  it('should create an escape sequence for bar code "CODE-39", 1mm (0.1cm) high, with human readable text in Code 39 format.', function () {
+    var barCodeBuilder = new BarCodeBuilder();
+    barCodeBuilder.setText('CODE-39').setHeight(0.1).setHumanReadable(true).setOnlyNumeric(false).setType(BarCodeBuilder.barCodeType.CODE_39);
+    assert.equal(barCodeBuilder.build(), '\u001bZ1\u0007\u0008CODE-39\u000d\u000a');
+  });
 });
