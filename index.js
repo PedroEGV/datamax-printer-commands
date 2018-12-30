@@ -1,4 +1,6 @@
+'use strict';
+
 module.exports = {
-  BarCodeBuilder: require('./bar-code-builder'),
-  nonCompressedGraphics: require('./graphics')
+  BarCodeBuilder: require('./lib/bar-code-builder'),
+  nonCompressedGraphics: require('./lib/graphics')
 };
