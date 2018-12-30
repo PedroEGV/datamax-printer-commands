@@ -16,5 +16,11 @@ describe('BarCodeBuilder', function () {
     assert.equal(barCodeBuilder.build(), '\u001bz2\u0005(\u00881234\u000d\u000a');
   });
 
+  it('should create an escape sequence for all-numeric bar code "1234", 5mm (0.5cm) high, with non-human readable text in Code 128 format.', function () {
+    var barCodeBuilder = new BarCodeBuilder();
+    barCodeBuilder.setText('1234').setHeight(0.5).setHumanReadable(false).setOnlyNumeric(true);
+    assert.equal(barCodeBuilder.build(), '\u001bz2\u0005(\u00891234\u000d\u000a');
+  });
+
 
 });
