@@ -34,3 +34,16 @@ var barCodeBuilder = new BarCodeBuilder()
   .setOnlyNumeric(true);
 var commandString = barCodeBuilder.build();
 ```
+
+The following code will create 2 escape sequences for all-numeric bar code "1234", 5mm (0.5cm) high, with non-human readable text in Code 128 format, using the same builder:
+
+```javascript
+const { BarCodeBuilder } = require('datamax-printer-commands');
+var barCodeBuilder = new BarCodeBuilder();
+barCodeBuilder.setType(BarCodeBuilder.barCodeType.CODE_128)
+  .setHeight(0.5)
+  .setHumanReadable(false)
+  .setOnlyNumeric(true);
+var commandString0 = barCodeBuilder.build('1234');
+var commandString1 = barCodeBuilder.build('4321');
+```

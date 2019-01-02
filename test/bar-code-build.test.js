@@ -27,4 +27,11 @@ describe('BarCodeBuilder', function () {
     barCodeBuilder.setText('CODE-39').setHeight(0.1).setHumanReadable(true).setOnlyNumeric(false).setType(BarCodeBuilder.barCodeType.CODE_39);
     assert.equal(barCodeBuilder.build(), '\u001bZ1\u0007\u0008CODE-39\u000d\u000a');
   });
+
+  it('should create 2 escape sequences for the bar codes "CODE-38" and "CODE-39", 1mm (0.1cm) high, with human readable text in Code 39 format, using the same builder.', function () {
+    var barCodeBuilder = new BarCodeBuilder();
+    barCodeBuilder.setHeight(0.1).setHumanReadable(true).setOnlyNumeric(false).setType(BarCodeBuilder.barCodeType.CODE_39);
+    assert.equal(barCodeBuilder.build('CODE-38'), '\u001bZ1\u0007\u0008CODE-38\u000d\u000a');
+    assert.equal(barCodeBuilder.build('CODE-39'), '\u001bZ1\u0007\u0008CODE-39\u000d\u000a');
+  });
 });
